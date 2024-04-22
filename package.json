@@ -1,14 +1,14 @@
 {
-  "name": "echo-server",
+  "name": "unit3d-echo-server",
   "version": "1.0.0",
   "description": "Laravel Echo Node JS Server for Socket.io",
   "repository": {
     "type": "git",
-    "url": "https://github.com/HDVinnie/echo-server"
+    "url": "https://github.com/HDVinnie/unit3d-echo-server"
   },
   "main": "dist/index.js",
   "keywords": [
-    "laravel",
+    "unit3d",
     "socket.io"
   ],
   "author": "HDVinnie",
