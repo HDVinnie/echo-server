@@ -1,6 +1,6 @@
 {
   "name": "unit3d-echo-server",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Laravel Echo Node JS Server for Socket.io",
   "repository": {
     "type": "git",
