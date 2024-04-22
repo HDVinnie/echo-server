@@ -27,20 +27,20 @@ export class Cli {
      * Allowed environment variables.
      */
     envVariables: any = {
-        LARAVEL_ECHO_SERVER_AUTH_HOST: "authHost",
-        LARAVEL_ECHO_SERVER_DEBUG: "devMode",
-        LARAVEL_ECHO_SERVER_HOST: "host",
-        LARAVEL_ECHO_SERVER_PORT: "port",
-        LARAVEL_ECHO_SERVER_REDIS_HOST: "databaseConfig.redis.host",
-        LARAVEL_ECHO_SERVER_REDIS_PORT: "databaseConfig.redis.port",
-        LARAVEL_ECHO_SERVER_REDIS_PASSWORD: "databaseConfig.redis.password",
-        LARAVEL_ECHO_SERVER_REDIS_DB: "databaseConfig.redis.db",
-        LARAVEL_ECHO_SERVER_REDIS_PREFIX: "databaseConfig.redis.keyPrefix",
-        LARAVEL_ECHO_SERVER_PROTO: "protocol",
-        LARAVEL_ECHO_SERVER_SSL_CERT: "sslCertPath",
-        LARAVEL_ECHO_SERVER_SSL_KEY: "sslKeyPath",
-        LARAVEL_ECHO_SERVER_SSL_CHAIN: "sslCertChainPath",
-        LARAVEL_ECHO_SERVER_SSL_PASS: "sslPassphrase"
+        UNIT3D_ECHO_SERVER_AUTH_HOST: "authHost",
+        UNIT3D_ECHO_SERVER_DEBUG: "devMode",
+        UNIT3D_ECHO_SERVER_HOST: "host",
+        UNIT3D_ECHO_SERVER_PORT: "port",
+        UNIT3D_ECHO_SERVER_REDIS_HOST: "databaseConfig.redis.host",
+        UNIT3D_ECHO_SERVER_REDIS_PORT: "databaseConfig.redis.port",
+        UNIT3D_ECHO_SERVER_REDIS_PASSWORD: "databaseConfig.redis.password",
+        UNIT3D_ECHO_SERVER_REDIS_DB: "databaseConfig.redis.db",
+        UNIT3D_ECHO_SERVER_REDIS_PREFIX: "databaseConfig.redis.keyPrefix",
+        UNIT3D_ECHO_SERVER_PROTO: "protocol",
+        UNIT3D_ECHO_SERVER_SSL_CERT: "sslCertPath",
+        UNIT3D_ECHO_SERVER_SSL_KEY: "sslKeyPath",
+        UNIT3D_ECHO_SERVER_SSL_CHAIN: "sslCertChainPath",
+        UNIT3D_ECHO_SERVER_SSL_PASS: "sslPassphrase"
     };
 
     /**
@@ -50,7 +50,7 @@ export class Cli {
         yargs.option({
             config: {
                 type: "string",
-                default: "laravel-echo-server.json",
+                default: "unit3d-echo-server.json",
                 describe: "The name of the config file to create."
             }
         });
@@ -82,8 +82,8 @@ export class Cli {
                         console.log(
                             "Configuration file saved. Run " +
                                 colors.magenta.bold(
-                                    "laravel-echo-server start" +
-                                        (file != "laravel-echo-server.json"
+                                    "unit3d-echo-server start" +
+                                        (file != "unit3d-echo-server.json"
                                             ? ' --config="' + file + '"'
                                             : "")
                                 ) +
@@ -546,7 +546,7 @@ export class Cli {
     getConfigFile(file: string = null, dir: string = null): string {
         const filePath = path.join(
             dir || "",
-            file || "laravel-echo-server.json"
+            file || "unit3d-echo-server.json"
         );
 
         return path.isAbsolute(filePath)

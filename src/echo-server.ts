@@ -22,7 +22,7 @@ export class EchoServer {
         databaseConfig: {
             redis: {},
             sqlite: {
-                databasePath: '/database/laravel-echo-server.sqlite'
+                databasePath: '/database/unit3d-echo-server.sqlite'
             }
         },
         devMode: false,

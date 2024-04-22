@@ -18,7 +18,7 @@ official docs: <https://laravel.com/docs/master/broadcasting>
 Install npm package globally with the following command:
 
 ``` shell
-$   npm install -g laravel-echo-server
+$   npm install -g unit3d-echo-server
 ```
 
 ### Initialize with CLI Tool
@@ -26,20 +26,20 @@ $   npm install -g laravel-echo-server
 Run the init command in your project directory:
 
 ``` shell
-$   laravel-echo-server init
+$   unit3d-echo-server init
 ```
 
-The cli tool will help you setup a **laravel-echo-server.json** file in the root directory of your project. This file will be loaded by the server during start up. You may edit this file later on to manage the configuration of your server.
+The cli tool will help you setup a **unit3d-echo-server.json** file in the root directory of your project. This file will be loaded by the server during start up. You may edit this file later on to manage the configuration of your server.
 
 #### API Clients
 
 The Laravel Echo Server exposes a light http API to perform broadcasting functionality. For security purposes, access to these endpoints from http referrers must be authenticated with an APP id and key. This can be generated using the cli command:
 
 ``` shell
-$ laravel-echo-server client:add APP_ID
+$ unit3d-echo-server client:add APP_ID
 ```
 
-If you run `client:add` without an app id argument, one will be generated for you. After running this command, the client id and key will be displayed and stored in the **laravel-echo-server.json** file.
+If you run `client:add` without an app id argument, one will be generated for you. After running this command, the client id and key will be displayed and stored in the **unit3d-echo-server.json** file.
 
 In this example, requests will be allowed as long as the app id and key are both provided with http requests.
 
@@ -53,14 +53,14 @@ or
 http://app.dev:6001/apps/APP_ID/channels?auth_key=skti68i...
 ```
 
-You can remove clients with `laravel-echo-server client:remove APP_ID`
+You can remove clients with `unit3d-echo-server client:remove APP_ID`
 
 #### Run The Server
 
 in your project root directory, run
 
 ``` shell
-$ laravel-echo-server start
+$ unit3d-echo-server start
 ```
 
 #### Stop The Server
@@ -68,12 +68,12 @@ $ laravel-echo-server start
 in your project root directory, run
 
 ``` shell
-$ laravel-echo-server stop
+$ unit3d-echo-server stop
 ```
 
 ### Configurable Options
 
-Edit the default configuration of the server by adding options to your **laravel-echo-server.json** file.
+Edit the default configuration of the server by adding options to your **unit3d-echo-server.json** file.
 
 
 | Title              | Default              | Description                 |
@@ -95,23 +95,23 @@ Edit the default configuration of the server by adding options to your **laravel
 | `subscribers`      | `{"http": true, "redis": true}` | Allows to disable subscribers individually. Available subscribers: `http` and `redis` |
 
 ### DotEnv
-If a .env file is found in the same directory as the laravel-echo-server.json
+If a .env file is found in the same directory as the unit3d-echo-server.json
 file, the following options can be overridden:
 
-- `authHost`: `LARAVEL_ECHO_SERVER_AUTH_HOST` *Note*: This option will fall back to the `LARAVEL_ECHO_SERVER_HOST` option as the default if that is set in the .env file.
-- `host`: `LARAVEL_ECHO_SERVER_HOST`
-- `port`: `LARAVEL_ECHO_SERVER_PORT`
-- `devMode`: `LARAVEL_ECHO_SERVER_DEBUG`
-- `databaseConfig.redis.host`: `LARAVEL_ECHO_SERVER_REDIS_HOST`
-- `databaseConfig.redis.port`: `LARAVEL_ECHO_SERVER_REDIS_PORT`
-- `databaseConfig.redis.password`: `LARAVEL_ECHO_SERVER_REDIS_PASSWORD`
-- `databaseConfig.redis.db`: `LARAVEL_ECHO_SERVER_REDIS_DB`
-- `databaseConfig.redis.prefix`: `LARAVEL_ECHO_SERVER_REDIS_PREFIX`
-- `protocol`: `LARAVEL_ECHO_SERVER_PROTO`
-- `sslKeyPath`: `LARAVEL_ECHO_SERVER_SSL_KEY`
-- `sslCertPath`: `LARAVEL_ECHO_SERVER_SSL_CERT`
-- `sslPassphrase`: `LARAVEL_ECHO_SERVER_SSL_PASS`
-- `sslCertChainPath`: `LARAVEL_ECHO_SERVER_SSL_CHAIN`
+- `authHost`: `UNIT3D_ECHO_SERVER_AUTH_HOST` *Note*: This option will fall back to the `UNIT3D_ECHO_SERVER_HOST` option as the default if that is set in the .env file.
+- `host`: `UNIT3D_ECHO_SERVER_HOST`
+- `port`: `UNIT3D_ECHO_SERVER_PORT`
+- `devMode`: `UNIT3D_ECHO_SERVER_DEBUG`
+- `databaseConfig.redis.host`: `UNIT3D_ECHO_SERVER_REDIS_HOST`
+- `databaseConfig.redis.port`: `UNIT3D_ECHO_SERVER_REDIS_PORT`
+- `databaseConfig.redis.password`: `UNIT3D_ECHO_SERVER_REDIS_PASSWORD`
+- `databaseConfig.redis.db`: `UNIT3D_ECHO_SERVER_REDIS_DB`
+- `databaseConfig.redis.prefix`: `UNIT3D_ECHO_SERVER_REDIS_PREFIX`
+- `protocol`: `UNIT3D_ECHO_SERVER_PROTO`
+- `sslKeyPath`: `UNIT3D_ECHO_SERVER_SSL_KEY`
+- `sslCertPath`: `UNIT3D_ECHO_SERVER_SSL_CERT`
+- `sslPassphrase`: `UNIT3D_ECHO_SERVER_SSL_PASS`
+- `sslCertChainPath`: `UNIT3D_ECHO_SERVER_SSL_CHAIN`
 
 
 ### Running with SSL
@@ -128,7 +128,7 @@ If you are struggling to get SSL implemented with this package, you could look a
 ```
 #the following would go within the server{} block of your web server config
 location /socket.io {
-	    proxy_pass http://laravel-echo-server:6001; #could be localhost if Echo and NginX are on the same box
+	    proxy_pass http://unit3d-echo-server:6001; #could be localhost if Echo and NginX are on the same box
 	    proxy_http_version 1.1;
 	    proxy_set_header Upgrade $http_upgrade;
 	    proxy_set_header Connection "Upgrade";
@@ -147,7 +147,7 @@ ProxyPassReverse /socket.io http://localhost:6001/socket.io
 ```
 
 ### Setting the working directory
-The working directory in which `laravel-echo-server` will look for the configuration file `laravel-echo-server.json` can be passed to the `start` command through the `--dir` parameter like so: `laravel-echo-server start --dir=/var/www/html/example.com/configuration`
+The working directory in which `unit3d-echo-server` will look for the configuration file `unit3d-echo-server.json` can be passed to the `start` command through the `--dir` parameter like so: `unit3d-echo-server start --dir=/var/www/html/example.com/configuration`
 
 ## Subscribers
 The Laravel Echo Server subscribes to incoming events with two methods: Redis & Http.
@@ -236,7 +236,7 @@ GET /apps/:APP_ID/channels/:CHANNEL_NAME/users
 ```
 
 ## Cross Domain Access To API
-Cross domain access can be specified in the laravel-echo-server.json file by changing `allowCors` in `apiOriginAllow` to `true`. You can then set the CORS Access-Control-Allow-Origin, Access-Control-Allow-Methods as a comma separated string (GET and POST are enabled by default) and the Access-Control-Allow-Headers that the API can receive.
+Cross domain access can be specified in the unit3d-echo-server.json file by changing `allowCors` in `apiOriginAllow` to `true`. You can then set the CORS Access-Control-Allow-Origin, Access-Control-Allow-Methods as a comma separated string (GET and POST are enabled by default) and the Access-Control-Allow-Headers that the API can receive.
 
 Example below:
 
@@ -257,7 +257,7 @@ This allows you to send requests to the API via AJAX from an app that may be run
 
 To persist presence channel data, there is support for use of Redis or SQLite as a key/value store. The key being the channel name, and the value being the list of presence channel members.
 
-Each database driver may be configured in the **laravel-echo-server.json** file under the `databaseConfig` property. The options get passed through to the database provider, so developers are free to set these up as they wish.
+Each database driver may be configured in the **unit3d-echo-server.json** file under the `databaseConfig` property. The options get passed through to the database provider, so developers are free to set these up as they wish.
 
 ### Redis
 For example, if you wanted to pass a custom configuration to Redis:
@@ -313,7 +313,7 @@ With SQLite you may be interested in changing the path where the database is sto
 {
   "databaseConfig" : {
     "sqlite" : {
-      "databasePath": "/path/to/laravel-echo-server.sqlite"
+      "databasePath": "/path/to/unit3d-echo-server.sqlite"
     }
   }
 }
@@ -333,7 +333,7 @@ When users join a presence channel, their presence channel authentication data i
 
 While presence channels contain a list of users, there will be instances where a user joins a presence channel multiple times. For example, this would occur when opening multiple browser tabs. In this situation "joining" and "leaving" events are only emitted to the first and last instance of the user.
 
-Optionally, you can configure laravel-echo-server to publish an event on each update to a presence channel, by setting `databaseConfig.publishPresence` to `true`:
+Optionally, you can configure unit3d-echo-server to publish an event on each update to a presence channel, by setting `databaseConfig.publishPresence` to `true`:
 
 ```json
 {
